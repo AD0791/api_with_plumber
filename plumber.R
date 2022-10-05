@@ -1,4 +1,6 @@
 library("plumber")
+import::here(users,.from="./data.R")
+
 
 
 # plumber.R
@@ -26,4 +28,12 @@ function(spec){
 
   plot(myData$Sepal.Length, myData$Petal.Length,
        main=title, xlab="Sepal Length", ylab="Petal Length")
+}
+
+
+
+#* Lookup a user
+#* @get /users/<id>
+function(id){
+  subset(users, uid %in% id)
 }
