@@ -4,6 +4,22 @@ import::here(users,.from="./data.R")
 
 # plumber.R
 
+
+
+
+#* The home page
+#* @get /
+function(){
+  return(
+    list(
+      hello = "Plumber",
+      vector = c(1,2,3)
+
+    )
+  )
+}
+
+
 #* Echo the parameter that was sent in
 #* @param msg The message to echo back.
 #* @get /echo
@@ -35,4 +51,4 @@ function(id){
   subset(users, uid %in% id)
 }
 
-
+ 
