@@ -13,7 +13,11 @@ function(){
   return(
     list(
       hello = "Plumber",
-      vector = c(1,2,3)
+      vector = c(1,2,3),
+      data = data.frame(
+        money = c(50, 30, 28),
+        name = c("Babas", "Richard", "Etienne")
+      )
 
     )
   )
