@@ -24,6 +24,31 @@ function(){
 }
 
 
+#* @serializer contentType list(type="application/pdf")
+#* @get /pdf
+function(res){
+  tmp <- tempfile()
+  pdf(tmp)
+  plot(1:10, type="b")
+  text(4, 8, "PDF from plumber!")
+  text(6, 2, paste("The time is", Sys.time()))
+  dev.off()
+
+  #filename = paste0('report','.pdf', sepp='')
+  #locale_filename = paste0('notebooks/',filename, sepp= '')
+
+
+  locale_filename = "plot.pdf"
+  res$setHeader("Content-Disposition", paste0("attachment; filename=", basename(locale_filename)))
+
+  readBin(tmp, "raw", n = file.info(tmp)$size)
+}
+
+
+
+
+
+
 #* Echo the parameter that was sent in
 #* @param msg The message to echo back.
 #* @get /echo
