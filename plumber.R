@@ -4,7 +4,11 @@ import::here(users,.from="./data.R")
 
 # plumber.R
 
-
+#* @filter cors
+cors <- function(res) {
+    res$setHeader("Access-Control-Allow-Origin", "*")
+    plumber::forward()
+}
 
 
 #* The home page
