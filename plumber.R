@@ -2,6 +2,9 @@ library("plumber")
 import::here(users,.from="./data.R")
 
 
+
+
+
 # plumber.R
 
 #* @filter cors
@@ -15,6 +18,7 @@ cors <- function(res) {
 
 #* @serializer contentType list(type="application/pdf")
 #* @get /pdf
+#* @tag plb
 function(res){
   tmp <- tempfile()
   pdf(tmp)
@@ -41,6 +45,7 @@ function(res){
 #* Echo the parameter that was sent in
 #* @param msg The message to echo back.
 #* @get /echo
+#* @tag plb
 function(msg=""){
   list(msg = paste0("The message is: '", msg, "'"))
 }
@@ -49,6 +54,7 @@ function(msg=""){
 #* @param spec If provided, filter the data to only this species (e.g. 'setosa')
 #* @get /plot
 #* @serializer png
+#* @tag plb
 function(spec){
   myData <- iris
   title <- "All Species"
@@ -65,6 +71,7 @@ function(spec){
 
 #* Lookup a user
 #* @get /users/<id>
+#* @tag plb
 function(id){
   subset(users, uid %in% id)
 }
