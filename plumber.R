@@ -11,21 +11,6 @@ cors <- function(res) {
 }
 
 
-#* The home page
-#* @get /
-function(){
-  return(
-    list(
-      hello = "Plumber",
-      vector = c(1,2,3),
-      data = data.frame(
-        money = c(50, 30, 28),
-        name = c("Babas", "Richard", "Etienne")
-      )
-
-    )
-  )
-}
 
 
 #* @serializer contentType list(type="application/pdf")
